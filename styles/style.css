@@ -2,4 +2,359 @@
 
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  font-size: var(--text-size);
+  font-family: var(--text-family);  
+  background-color: var(--background-color);
+  line-height: var(--text-inline);
+}
+
+.header {
+  background-color: var(--background-color);
+  background-image: var(--background-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: local;
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  justify-items: center;
+  align-items: start;
+  position: relative;
+  min-height: 768px;
+}
+
+.header__theme-menu {
+  padding-top: 20px;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  border: 1px solid transparent;
+  padding: 2px 12px;
+  color: var(--accent-color);
+  line-height: 18px;
+  text-transform: lowercase;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header__theme-menu-button_active {
+  border-color: currentColor;
+  cursor: default;
+  pointer-events: none;
+}
+
+.header__theme-menu-button:hover {
+  border-color: var(--accent-color);
+}
+
+.header__theme-menu-button:focus {
+  outline: 0;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end-color: currentColor;
+}
+
+.header-title {
+  justify-self: start;
+  align-self: center;
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  font-weight: bold;
+  color: var(--title-color);
+  line-height: 82.5%;
+  text-shadow: 4px 4px 0 var(--title-shadow);
+}
+
+.header-introduction {
+  justify-self: end;
+  align-self: center;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-left: 50%;
+}
+
+.decorated-zone::before,
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inline-size: 25px;
+  block-size: 25px;
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before {
+  border-inline-end: 1px solid var(--accent-color, #ff0070);
+  border-block-start: 1px solid var(--accent-color, #ff0070);
+  inset-inline-end: clamp(10px, 0.0286rem + 2.5445vw, 20px);
+  inset-block-start: clamp(10px, 0.0286rem + 2.5445vw, 20px);
+}
+
+.decorated-zone::after {
+  border-inline-start: 1px solid var(--accent-color, #ff0070);
+  border-block-end: 1px solid var(--accent-color, #ff0070);
+  inset-inline-start: clamp(10px, 0.0286rem + 2.5445vw, 20px);
+  inset-block-end: clamp(10px, 0.0286rem + 2.5445vw, 20px);
+}
+
+.rec {
+  position: absolute;
+  z-index: 1;
+  visibility: var(--rec-decor-visibility, visible);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  inset-inline-end: clamp(20px, 0.0286rem + 4vw, 30px);
+  inset-block-start: clamp(10px, 0.0286rem + 2.5445vw, 20px);
+}
+
+.rec::before {
+  content: "REC";
+  color: var(--accent-color, #ff0070);
+  line-height: 24px;
+}
+
+.rec::after {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0 0 2px 2px var(--accent-color, #ff0070);
+  background: var(--accent-color, #ff0070);
+  inline-size: 9px;
+  block-size: 9px;
+}
+
+.link {
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--title-shadow);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link:focus {
+  outline: 0;
+}
+
+.link:focus-visible {
+  outline: 1px solid currentColor;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  background-color: var(--background-color);
+  padding-top: 61px;
+}
+
+.section {
+  display: grid;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: var(--regular-text-color);
+  font-weight: normal;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+.title-answer {
+  background-color: var(--h3-background-color);
+  color: var(--h3-color);
+  font-weight: bold;
+  font-size: inherit;
+}
+
+.answer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.answer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title-question {
+  color: var(--accent-color);
+  font-size: inherit;
+  font-weight: bold;
+}
+
+.why,
+.how {
+  grid-template-columns: 32% 1fr;
+  gap: 20px;
+}
+
+.what {
+  grid-template-rows: 47px 1fr;
+  gap: 20px;
+}
+
+.what .answer-list {
+  flex-direction: row;
+}
+
+.what .answer,
+.what .title-question {
+  max-width: min-content;
+  min-width: 315px;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-self: stretch;
+}
+
+.pictures {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  gap: 20px;
+}
+
+.sunset {
+  grid-area: 1/1/2/3;
+}
+
+.icecream {
+  grid-area: 1/3/3/4;
+}
+
+.tape {
+  grid-area: 2/1/4/2;
+}
+
+.books {
+  grid-area: 2/2/2/2;
+}
+
+.street {
+  grid-area: 3/2/4/4;
+}
+
+.footer {
+  margin-top: 60px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 768px;
+  padding: 10px;
+}
+
+.footer .shadow {
+  text-shadow: 2px 2px 0 var(--title-shadow);
+}
+
+@media (width < 1024px) {
+  .header,
+  .footer {
+    min-height: 1024px;
+  }
+
+  .header__theme-menu {
+    padding-right: 20px;
+    justify-self: end;
+    align-self: center;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: column;
+  }
+
+  .what {
+    grid-template-rows: 70px 1fr;
+    gap: 20px;
+  }
+
+  .what .answer-list {
+    flex-direction: column;
+  }
+
+  .what .answer {
+    max-width: none;
+  }
+
+  .what .title-question {
+    max-width: min-content;
+    min-width: auto;
+  }
+}
+
+@media (width < 576px) {
+  .header-introduction {
+    justify-self: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .header,
+  .footer {
+    min-height: 668px;
+    margin-top: 0;
+  }
+
+  .header__theme-menu {
+    padding-right: 10px;
+    padding-top: 0;
+  }
+
+  .header-title {
+    justify-self: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+
+  .main {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    gap: 50px;
+  }
+
+  .section {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .what,
+  .why,
+  .how {
+    grid-template-columns: none;
+    grid-template-rows: 47px 1fr;
+    gap: 20px;
+  }
+
+  .how .answer-list {
+    padding-top: 25px;
+  }
+
+  .what .title-question {
+    max-width: none;
+    min-width: auto;
+  }
+  
+  .pictures {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
