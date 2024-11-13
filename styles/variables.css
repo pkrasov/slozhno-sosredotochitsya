@@ -2,6 +2,7 @@
   Переменные для вашего проекта
   и их переопределение под различные устройства
 */
+
 :root {
   --text-family: "IBM Plex Mono";
   --text-size: 18px;
@@ -14,4 +15,5 @@
   --h3-color: #000028;
   --background-color: #000028;
   --background-image: url(../images/cover-image-dark.png);
+
 }
