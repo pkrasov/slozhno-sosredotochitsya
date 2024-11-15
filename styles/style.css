@@ -3,29 +3,29 @@
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
   font-size: var(--text-size);
-  font-family: var(--text-family);
+  font-family: var(--text-family), monospace, sans-serif;
   background-color: var(--background-color);
   line-height: var(--text-inline);
   background-attachment: fixed;
-}
-
-.header {
   background-color: var(--background-color);
   background-image: var(--background-image);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: local;
+}
+
+.header {
   display: grid;
   grid-template-rows: 1fr min-content 1fr;
   justify-items: center;
   align-items: start;
   position: relative;
-  min-height: 768px;
+  min-height: 668px;
+  height: 100vh;
 }
 
 .header__theme-menu {
-  padding-top: 20px;
+  padding-top: 17px;
 }
 
 .header__theme-menu-list {
@@ -35,23 +35,25 @@
 }
 
 .header__theme-menu-button {
-  border: 1px solid transparent;
-  padding: 2px 12px;
+  border: none;
   color: var(--accent-color);
   line-height: 18px;
+  text-align: center;
   text-transform: lowercase;
   background: transparent;
   cursor: pointer;
+  min-height: 26px;
+  min-inline-size: 70px;
+  border-block-end: 1px solid transparent;
 }
 
 .header__theme-menu-button_active {
-  border-color: currentColor;
-  cursor: default;
+  border: 1px solid var(--accent-color);
   pointer-events: none;
 }
 
 .header__theme-menu-button:hover {
-  border-color: var(--accent-color);
+  border: 1px solid var(--accent-hover-color);
 }
 
 .header__theme-menu-button:focus {
@@ -62,7 +64,7 @@
   border-block-end-color: currentColor;
 }
 
-.header-title {
+.bigger-title {
   justify-self: start;
   align-self: center;
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
@@ -136,11 +138,11 @@
 
 .link {
   text-decoration: none;
-  text-shadow: 2px 2px 0 var(--title-shadow);
+  text-shadow: 1px 1px 0 var(--title-shadow);
 }
 
 .link:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid currentColor;
 }
 
 .link:focus {
@@ -155,7 +157,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 80px;
-  background-color: var(--background-color);
+  /*background-color: var(--background-color);*/
   padding-top: 61px;
 }
 
@@ -171,8 +173,8 @@ main {
 }
 
 .title-answer {
-  background-color: var(--h3-background-color);
-  color: var(--h3-color);
+  background-color: var(--subtitle-background-color);
+  color: var(--subtitle-color);
   font-weight: bold;
   font-size: inherit;
 }
@@ -206,13 +208,26 @@ main {
   gap: 20px;
 }
 
-.what .answer-list {
-  flex-direction: row;
+.how h3.title-answer {
+  margin-bottom: 20px;
 }
 
-.what .answer,
+.how .answer-list .title-answer {
+  font-weight: normal;
+}
+
+.what .answer-list {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .what .title-question {
   max-width: min-content;
+  min-width: 315px;
+}
+
+.what .answer {
   min-width: 315px;
 }
 
@@ -224,11 +239,20 @@ img {
   align-self: stretch;
 }
 
+.picture {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .pictures {
   display: grid;
   grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(3, auto);
   gap: 20px;
+}
+
+.picture .title-answer {
+  margin-bottom: 20px;
 }
 
 .sunset {
@@ -257,7 +281,8 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 768px;
+  min-height: 668px;
+  height: 100vh;
   padding: 10px;
 }
 
@@ -266,15 +291,11 @@ img {
 }
 
 @media (width < 1024px) {
-  .header,
-  .footer {
-    min-height: 1024px;
-  }
-
   .header__theme-menu {
     padding-right: 20px;
     justify-self: end;
     align-self: center;
+    margin-bottom: 0;
   }
 
   .header__theme-menu-list {
@@ -287,7 +308,7 @@ img {
   }
 
   .what .answer-list {
-    flex-direction: column;
+    grid: none;
   }
 
   .what .answer {
@@ -305,6 +326,7 @@ img {
     justify-self: center;
     margin-left: 10px;
     margin-right: 10px;
+    margin-top: 10px;
   }
 
   .header,
@@ -315,16 +337,19 @@ img {
 
   .header__theme-menu {
     padding-right: 10px;
-    padding-top: 0;
+    padding-top: 5[px];
   }
 
-  .header-title {
+  .bigger-title {
     justify-self: center;
     padding-left: 10px;
     padding-right: 10px;
     font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   }
 
+  .how h3.title-answer {
+    margin-top: 25px;
+  }
   .main {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -344,18 +369,21 @@ img {
     gap: 20px;
   }
 
-  .how .answer-list {
-    padding-top: 25px;
-  }
-
   .what .title-question {
     max-width: none;
     min-width: auto;
   }
-
+  .picture .title-answer {
+    margin-bottom: 10px;
+  }
   .pictures {
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+
+  .picture {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }

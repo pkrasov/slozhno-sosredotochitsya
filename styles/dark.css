@@ -1,24 +1,26 @@
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
   :root {
     --hover-border-color: rgba(255, 0, 112, 0.4);
     --title-color: #db00ff;
     --regular-text-color: #f1b2ce;
     --accent-color: #ff0070;
-    --h3-background-color: #ff0070;
-    --h3-color: #000028;
+    --subtitle-background-color: #ff0070;
+    --subtitle-color: #000028;
     --background-color: #000028;
     --background-image: url(../images/cover-image-dark.png);
     --rec-decor-visibility: visible;
   }
 }
-
+*/
 .page.theme_dark {
   --hover-border-color: rgba(255, 0, 112, 0.4);
   --title-color: #db00ff;
   --regular-text-color: #f1b2ce;
   --accent-color: #ff0070;
-  --h3-background-color: #ff0070;
-  --h3-color: #000028;
+  --accent-hover-color: #ff007066;
+  --title-shadow: #ff0070;
+  --subtitle-background-color: #ff0070;
+  --subtitle-color: #000028;
   --background-color: #000028;
   --background-image: url(../images/cover-image-dark.png);
   --rec-decor-visibility: visible;
